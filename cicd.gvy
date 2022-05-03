@@ -5,7 +5,7 @@ pipeline {
 	         steps {
                 // step1 
                 echo 'compiling..'
-		            git url: 'https://github.com/lerndevops/PetClinic'
+		            git url: 'https://github.com/yoursbale/PetClinic'
 		            sh script: '/opt/apache-maven-3.8.5/bin/mvn compile'
            }
         }
@@ -60,8 +60,8 @@ pipeline {
 	         steps {
               withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://index.docker.io/v1/') {
                     sh script: 'cd  $WORKSPACE'
-                    sh script: 'docker build --file Dockerfile --tag docker.io/lerndevops/petclinic:$BUILD_NUMBER .'
-                    sh script: 'docker push docker.io/lerndevops/petclinic:$BUILD_NUMBER'
+                    sh script: 'docker build --file Dockerfile --tag docker.io/yoursbale/petclinic:$BUILD_NUMBER .'
+                    sh script: 'docker push docker.io/yoursbale/petclinic:$BUILD_NUMBER'
               }	
            }		
         }
